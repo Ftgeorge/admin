@@ -9,12 +9,12 @@ export default function Page() {
   return (
     <PageContainer>
       <PageHeader>
-        <PageHeading>Ticket Management</PageHeading>
+        <PageHeading>Communication Hub</PageHeading>
         <div className="flex gap-2 text-white">
           <Button variant="default" className="bg-[#7B4F3A]">
             Open Tickets
           </Button>
-          <Button variant="outline" className="bg-[#7B4F3A]">
+          <Button variant="outline" className="border-[#7B4F3A] text-[#7B4F3A]">
             Closed Tcikets
           </Button>
         </div>
@@ -28,7 +28,17 @@ export default function Page() {
           >
             <div className="flex justify-between border-b border-[#E3E2D9] pb-2">
               <h2>{message.name}</h2>
-              <p>{message.status}</p>
+
+              <div className="flex justify-center items-center">
+                <span
+                  className={`w-3 h-3 rounded-full mr-2 ${
+                    message.status === "pending"
+                      ? "bg-yellow-300"
+                      : "bg-blue-300"
+                  }`}
+                ></span>
+                {message.status === "pending" ? "Pending" : "In Progress"}
+              </div>
             </div>
             <div className="flex relative">
               <div className="flex flex-col text-lg">
@@ -38,7 +48,10 @@ export default function Page() {
                   View More
                 </p>
               </div>
-              <Button variant="default" className="bg-[#7B4F3A] ml-auto absolute top-14 right-0 text-white">
+              <Button
+                variant="default"
+                className="bg-[#7B4F3A] ml-auto absolute top-14 right-0 text-white"
+              >
                 <ReplyIcon />
                 Reply
               </Button>
