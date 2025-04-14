@@ -3,11 +3,11 @@ import { useState } from "react";
 
 export default function PaymentSettingsPanel() {
     const [enabledCurrencies, setEnabledCurrencies] = useState([
+        { code: "NGN", name: "Nigerian Naira", symbol: "₦", isEnabled: true },
         { code: "USD", name: "US Dollar", symbol: "$", isEnabled: true },
         { code: "EUR", name: "Euro", symbol: "€", isEnabled: true },
         { code: "GBP", name: "British Pound", symbol: "£", isEnabled: true },
         { code: "CAD", name: "Canadian Dollar", symbol: "CA$", isEnabled: false },
-        { code: "AUD", name: "Australian Dollar", symbol: "A$", isEnabled: false },
         { code: "JPY", name: "Japanese Yen", symbol: "¥", isEnabled: false },
     ]);
 
@@ -37,7 +37,7 @@ export default function PaymentSettingsPanel() {
         <div className="space-y-6">
             <div className="border-b border-gray-200 pb-5 mb-6">
                 <h3 className="text-lg font-medium leading-6 text-gray-900 flex items-center gap-2">
-                    <DollarSign className="h-5 w-5 text-amber-600" />
+                    <DollarSign className="h-5 w-5 text-[#7B4F3A]" />
                     Currency & Payment Settings
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
@@ -52,7 +52,7 @@ export default function PaymentSettingsPanel() {
                         id="default-currency"
                         name="default-currency"
                         className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm rounded-md"
-                        defaultValue="USD"
+                        defaultValue="NGN"
                     >
                         {enabledCurrencies
                             .filter(c => c.isEnabled)
@@ -76,7 +76,7 @@ export default function PaymentSettingsPanel() {
                                     type="checkbox"
                                     checked={currency.isEnabled}
                                     onChange={() => toggleCurrency(currency.code)}
-                                    className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                                    className="h-4 w-4 text-[#7B4F3A] focus:ring-amber-500 border-gray-300 rounded"
                                 />
                                 <label htmlFor={`currency-${currency.code}`} className="text-sm text-gray-700">
                                     {currency.name} ({currency.symbol})
@@ -97,7 +97,7 @@ export default function PaymentSettingsPanel() {
                                     type="checkbox"
                                     checked={method.isEnabled}
                                     onChange={() => togglePaymentMethod(method.id)}
-                                    className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                                    className="h-4 w-4 text-[#7B4F3A] focus:ring-amber-500 border-gray-300 rounded"
                                 />
                                 <label htmlFor={`payment-${method.id}`} className="text-sm text-gray-700">
                                     {method.name}
@@ -114,7 +114,7 @@ export default function PaymentSettingsPanel() {
                             <label htmlFor="guest-fee" className="block text-sm font-medium text-gray-700">
                                 Guest Service Fee (%)
                             </label>
-                            <div className="mt-1 relative rounded-md shadow-sm">
+                            <div className="mt-1 relative rounded-md ">
                                 <input
                                     type="text"
                                     name="guest-fee"
@@ -133,7 +133,7 @@ export default function PaymentSettingsPanel() {
                             <label htmlFor="host-fee" className="block text-sm font-medium text-gray-700">
                                 Host Service Fee (%)
                             </label>
-                            <div className="mt-1 relative rounded-md shadow-sm">
+                            <div className="mt-1 relative rounded-md ">
                                 <input
                                     type="text"
                                     name="host-fee"
@@ -154,13 +154,13 @@ export default function PaymentSettingsPanel() {
             <div className="flex justify-end pt-5">
                 <button
                     type="button"
-                    className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                    className="bg-transparent py-2 px-4 border border-gray-300 rounded-md  text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
                 >
                     Cancel
                 </button>
                 <button
                     type="submit"
-                    className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                    className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent  text-sm font-medium rounded-md text-white bg-[#7B4F3A] hover:bg-[#7B4F3A] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
                 >
                     Save
                 </button>
