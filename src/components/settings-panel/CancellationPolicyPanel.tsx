@@ -26,7 +26,7 @@ export function CancellationPolicyPanel() {
         <div className="space-y-6">
             <div className="border-b border-gray-200 pb-5 mb-6">
                 <h3 className="text-lg font-medium leading-6 text-gray-900 flex items-center gap-2">
-                    <FileText className="h-5 w-5 text-amber-600" />
+                    <FileText className="h-5 w-5 text-[#7B4F3A]" />
                     Cancellation Policies
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
@@ -39,15 +39,15 @@ export function CancellationPolicyPanel() {
                     <h4 className="text-md font-medium text-gray-700">Available Policies</h4>
                     <button
                         type="button"
-                        className="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                        className="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md shadow-sm text-white bg-[#7B4F3A] hover:bg-[#7B4F3A] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
                     >
                         Add New Policy
                     </button>
                 </div>
 
-                <div className="bg-white shadow overflow-hidden border-b border-gray-200 rounded-lg">
-                    <table className="min-w-full divide-y divide-gray-200">
-                        <thead className="bg-gray-50">
+                <div className="bg-transparent overflow-hidden border border-[#E3E2D9] rounded-lg">
+                    <table className="min-w-full divide-y divide-[#E3E2D9]">
+                        <thead className="bg-[#E3E2D955]">
                             <tr>
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Policy Name
@@ -66,7 +66,7 @@ export function CancellationPolicyPanel() {
                                 </th>
                             </tr>
                         </thead>
-                        <tbody className="bg-white divide-y divide-gray-200">
+                        <tbody className="bg-transparent divide-y divide-gray-200">
                             {policies.map((policy) => (
                                 <tr key={policy.id}>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -86,7 +86,7 @@ export function CancellationPolicyPanel() {
                                         ) : (
                                             <button
                                                 onClick={() => handleSetDefault(policy.id)}
-                                                className="text-xs text-amber-600 hover:text-amber-900"
+                                                className="text-xs text-[#7B4F3A] hover:text-amber-900"
                                             >
                                                 Set as default
                                             </button>
@@ -95,7 +95,7 @@ export function CancellationPolicyPanel() {
                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <button
                                             onClick={() => handleEdit(policy)}
-                                            className="text-amber-600 hover:text-amber-900 mr-4"
+                                            className="text-[#7B4F3A] hover:text-amber-900 mr-4"
                                         >
                                             Edit
                                         </button>
