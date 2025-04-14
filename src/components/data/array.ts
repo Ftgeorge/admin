@@ -1,4 +1,18 @@
 import { Booking, Property, User } from "@/lib/props";
+import {
+    Settings,
+    FileText,
+    Home,
+    DollarSign,
+    Users,
+    Lock,
+} from "lucide-react";
+import AdminManagementPanel from "../settings-panel/AdminManagementPanel";
+import { CancellationPolicyPanel } from "../settings-panel/CancellationPolicyPanel";
+import GeneralSettingsPanel from "../settings-panel/GeneralSettingsPanel";
+import PaymentSettingsPanel from "../settings-panel/PaymentSettingsPanel";
+import PermissionsPanel from "../settings-panel/PermissionsPanel";
+import PropertyManagementPanel from "../settings-panel/PropertyManagementPanel";
 
 export const recentBookings: Booking[] = [
     {
@@ -259,4 +273,43 @@ export const UserData: User[] = [
         status: "Active",
         dateJoined: "2023-01-30",
     }
-]
+];
+
+export const settingsCategories = [
+    {
+        icon: Settings,
+        title: "General Settings",
+        description: "Configure basic platform settings",
+        component: GeneralSettingsPanel
+    },
+    {
+        icon: FileText,
+        title: "Cancellation Policies",
+        description: "Manage guest cancellation rules and refund options",
+        component: CancellationPolicyPanel
+    },
+    {
+        icon: Home,
+        title: "Property Management Settings",
+        description: "Configure property listing rules and requirements",
+        component: PropertyManagementPanel
+    },
+    {
+        icon: DollarSign,
+        title: "Currency & Payment Settings",
+        description: "Manage supported currencies and payment methods",
+        component: PaymentSettingsPanel
+    },
+    {
+        icon: Users,
+        title: "Admin Management",
+        description: "Add and manage administrator accounts",
+        component: AdminManagementPanel
+    },
+    {
+        icon: Lock,
+        title: "Role-Based Permissions",
+        description: "Configure access controls for different user roles",
+        component: PermissionsPanel
+    },
+];
