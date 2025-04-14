@@ -1,19 +1,25 @@
+"use client";
+
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Bell } from 'lucide-react'; // Example icon
-import PageContainer from "@/components/PageContainer"; // Import shared components
+import { AlertTriangle, BarChart } from 'lucide-react';
+import PageContainer from "@/components/PageContainer";
 import PageHeader from "@/components/PageHeader";
 import PageHeading from "@/components/PageHeading";
-import React from "react"; // Import React for type definitions like React.ReactNode
+import React, { useState } from "react";
+import { MdApartment } from "react-icons/md";
+import { FaRegUser } from "react-icons/fa";
+import { BsHourglassSplit } from "react-icons/bs";
+import { IoCalendarOutline } from "react-icons/io5";
+import { IoMdTrendingUp } from "react-icons/io";
+import { LineChart, Line, BarChart as RechartsBarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ComposedChart } from 'recharts';
 
-// --- Type Definitions ---
 interface MetricValueObject {
   landlords: number;
   renters: number;
@@ -22,7 +28,7 @@ interface MetricValueObject {
 interface Metric {
   title: string;
   value: number | string | MetricValueObject;
-  icon: React.ReactNode; // Type for JSX element
+  icon: React.ReactNode;
 }
 
 interface Booking {
@@ -30,18 +36,27 @@ interface Booking {
   details: string;
   date: string;
   amount: string;
-  status: "Completed" | "Pending"; // Use union type for specific statuses
+  status: "Completed" | "Pending";
   avatar: string;
 }
-// --- End Type Definitions ---
 
-// Placeholder data - replace with actual data fetching later
+type ChartType = 'properties' | 'revenue' | 'transactions';
+
+const chartTypes: ChartType[] = ['properties', 'revenue', 'transactions'];
+
+const chartLabels: Record<ChartType, string> = {
+  properties: 'Properties Listed',
+  revenue: 'Revenue',
+  transactions: 'Transactions'
+};
+
+
 const metrics: Metric[] = [
-  { title: "Total Property Listed", value: 672, icon: <Bell className="h-4 w-4 text-muted-foreground" /> },
-  { title: "Active Users", value: { landlords: 355, renters: 792 }, icon: <Bell className="h-4 w-4 text-muted-foreground" /> },
-  { title: "Pending Approvals", value: 215, icon: <Bell className="h-4 w-4 text-muted-foreground" /> },
-  { title: "Pending Bookings", value: 126, icon: <Bell className="h-4 w-4 text-muted-foreground" /> },
-  { title: "Total Revenue", value: "₦24,120,931", icon: <Bell className="h-4 w-4 text-muted-foreground" /> },
+  { title: "Total Property Listed", value: 672, icon: <MdApartment className="size-4" /> },
+  { title: "Active Users", value: 964, icon: <FaRegUser className="size-4" /> },
+  { title: "Pending Approvals", value: 215, icon: <BsHourglassSplit className="size-4" /> },
+  { title: "Pending Bookings", value: 126, icon: <AlertTriangle className="size-4" /> },
+  { title: "Total Revenue", value: "₦24,120,931", icon: <BarChart className="size-4" /> },
 ];
 
 const recentBookings: Booking[] = [
@@ -61,24 +76,108 @@ const recentBookings: Booking[] = [
     status: "Pending",
     avatar: "/placeholder-user.jpg",
   },
-  // Add more bookings as needed
+  {
+    name: "Sarah Okafor",
+    details: "1 Bedroom Studio, Port Harcourt",
+    date: "Apr 2 - Apr 9",
+    amount: "₦35,000",
+    status: "Completed",
+    avatar: "/placeholder-user.jpg",
+  },
+  {
+    name: "Michael Ibrahim",
+    details: "4 Bedroom Duplex, Kano",
+    date: "Apr 5 - Apr 12",
+    amount: "₦75,000",
+    status: "Pending",
+    avatar: "/placeholder-user.jpg",
+  },
 ];
 
-// Placeholder for chart component
-function OverviewChart() {
-  // Replace with actual chart implementation (e.g., using Recharts, Chart.js)
+const overviewButtons = [
+  {
+    name: "Review New Users",
+    link: "/reviewusers"
+  },
+  {
+    name: "Review Disputes",
+    link: "/resolvedisputes"
+  },
+  {
+    name: "Approve Pending Properties",
+    link: "/approvepending"
+  },
+]
+
+const salesTrendData = [
+  { month: 'Jan', properties: 40, revenue: 12000000, transactions: 35 },
+  { month: 'Feb', properties: 28, revenue: 8500000, transactions: 22 },
+  { month: 'Mar', properties: 45, revenue: 15000000, transactions: 42 },
+  { month: 'Apr', properties: 55, revenue: 18500000, transactions: 48 },
+  { month: 'May', properties: 60, revenue: 21000000, transactions: 55 },
+  { month: 'Jun', properties: 65, revenue: 24000000, transactions: 62 },
+  { month: 'Jul', properties: 70, revenue: 25000000, transactions: 68 },
+];
+
+function RealEstateTrendChart() {
+  const [chartType, setChartType] = useState('properties');
+
+  const formatRevenue = (value: any) => {
+    return `₦${(value / 1000000).toFixed(1)}M`;
+  };
+
   return (
-    <div className="bg-white p-4 rounded-lg shadow flex items-center justify-center h-64 text-gray-500">
-      [Chart Placeholder]
-      {/* Example bar chart structure matching the mockup */}
-      <div className="flex items-end space-x-4 h-full pb-4">
-        {[40, 70, 50, 80, 60, 75, 55].map((height, index) => (
-          <div key={index} className="flex flex-col items-center space-y-1">
-            <div className="w-8 bg-[#C7B09D] rounded-t-sm" style={{ height: `${height * 0.7}%` }}></div>
-            <div className="w-8 bg-[#7B5B40] rounded-b-sm" style={{ height: `${height * 0.3}%` }}></div>
-            <span className="text-xs text-gray-500">{['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][index]}</span>
-          </div>
-        ))}
+    <div className="h-full flex flex-col">
+      <div className="flex justify-between mb-4">
+        <div className="flex space-x-2">
+          {chartTypes.map(type => (
+            <button
+              key={type}
+              className={`px-4 py-2 text-xs rounded-md ${chartType === type ? 'bg-[#7B4F3A] text-white' : 'bg-transparent border border-[#E3E2D9] text-[#7B4F3A]'
+                }`}
+              onClick={() => setChartType(type)}
+            >
+              {chartLabels[type]}
+            </button>
+          ))}
+        </div>
+
+        <select className="text-xs text-[#7B4F3A] rounded-md flex items-center justify-center px-4 py-2 border border-[#E3E2D9]">
+          <option>Last 7 months</option>
+          <option>Last 12 months</option>
+          <option>This year</option>
+        </select>
+      </div>
+
+      <div className="flex-1 w-full min-h-64">
+        <ResponsiveContainer width="100%" height="100%">
+          {chartType === 'properties' ? (
+            <RechartsBarChart data={salesTrendData} margin={{ top: 10, right: 30, left: 0, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E3E2D9" />
+              <XAxis dataKey="month" axisLine={false} tickLine={false} />
+              <YAxis axisLine={false} tickLine={false} />
+              <Tooltip formatter={(value) => [value, 'Properties']} />
+              <Bar dataKey="properties" fill="#7B4F3A" radius={[4, 4, 0, 0]} />
+            </RechartsBarChart>
+          ) : chartType === 'revenue' ? (
+            <ComposedChart data={salesTrendData} margin={{ top: 10, right: 30, left: 0, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E3E2D9" />
+              <XAxis dataKey="month" axisLine={false} tickLine={false} />
+              <YAxis axisLine={false} tickLine={false} tickFormatter={formatRevenue} />
+              <Tooltip formatter={(value) => [formatRevenue(value), 'Revenue']} />
+              <Bar dataKey="revenue" fill="#C7B09D" radius={[4, 4, 0, 0]} />
+              <Line type="monotone" dataKey="revenue" stroke="#7B4F3A" strokeWidth={2} dot={{ r: 4 }} />
+            </ComposedChart>
+          ) : (
+            <LineChart data={salesTrendData} margin={{ top: 10, right: 30, left: 0, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E3E2D9" />
+              <XAxis dataKey="month" axisLine={false} tickLine={false} />
+              <YAxis axisLine={false} tickLine={false} />
+              <Tooltip formatter={(value) => [value, 'Transactions']} />
+              <Line type="monotone" dataKey="transactions" stroke="#7B4F3A" strokeWidth={2} dot={{ fill: "#C7B09D", stroke: "#7B4F3A", strokeWidth: 2, r: 4 }} />
+            </LineChart>
+          )}
+        </ResponsiveContainer>
       </div>
     </div>
   );
@@ -87,54 +186,56 @@ function OverviewChart() {
 export default function OverviewPage() {
   return (
     <PageContainer>
-      <PageHeader>
+      <PageHeader className="flex justify-between">
         <PageHeading>Overview</PageHeading>
+        <div className="flex gap-3">
+          {overviewButtons.map((button, index) => (
+            <button key={index} className="px-6 py-2 border border-[#E3E2D9] rounded-lg text-[#323232] text-sm bg-transparent">{button.name}</button>
+          ))}
+        </div>
       </PageHeader>
-      <div className="space-y-6">
-        {/* Metric Cards */}
+      <div className="space-y-6 flex-1 flex flex-col">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {metrics.map((metric, index) => (
-            <Card key={index} className="bg-white">
+            <Card key={index} className="bg-[#F8F7F2] border-[#E3E2D9] transition-transform duration-300 hover:scale-102 hover:shadow-sm cursor-pointer">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">{metric.title}</CardTitle>
-                {metric.icon}
+                <CardTitle className="text-sm text-[#898989] font-medium">{metric.title}</CardTitle>
+                <div className="rounded-lg border-2 border-[#7B4F3A] bg-[#7B4F3A44] text-[#7B4F3A] flex items-center justify-center size-10">
+                  {metric.icon}
+                </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="w-full flex items-start justify-center">
                 {typeof metric.value === 'object' ? (
-                  <div className="flex items-center gap-4">
-                    <div>
-                      <p className="text-xs text-muted-foreground">Landlords</p>
-                      <div className="text-2xl font-bold">{metric.value.landlords}</div>
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground">Renters</p>
-                      <div className="text-2xl font-bold">{metric.value.renters}</div>
-                    </div>
-                  </div>
+                  <div className="text-3xl font-semibold">{metric.value.landlords}</div>
                 ) : (
-                  <div className="text-2xl font-bold">{metric.value}</div>
+                  <div className="text-3xl font-semibold">{metric.value}</div>
                 )}
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Chart and Recent Bookings */}
-        <div className="grid gap-6 lg:grid-cols-3">
-          <Card className="lg:col-span-2 bg-white">
-            <CardHeader>
-              <CardTitle>Sales Trend</CardTitle> { /* Updated title to match mockup hint */}
+        {/* Chart and Recent Bookings - with flex-1 to fill remaining space */}
+        <div className="grid gap-6 lg:grid-cols-3 flex-1 min-h-0">
+          <Card className="lg:col-span-2 bg-[#F8F7F2] border-[#E3E2D9] transition-transform duration-300 hover:scale-102 hover:shadow-sm cursor-pointer flex flex-col">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle>Sales Trend</CardTitle>
+              <div className="rounded-lg border-2 border-[#7B4F3A] bg-[#7B4F3A44] text-[#7B4F3A] flex items-center justify-center size-10">
+                <IoMdTrendingUp className="size-4" />
+              </div>
             </CardHeader>
-            <CardContent>
-              <OverviewChart />
+            <CardContent className="flex-1 pb-6">
+              <RealEstateTrendChart />
             </CardContent>
           </Card>
-          <Card className="bg-white">
-            <CardHeader>
+          <Card className="bg-[#F8F7F2] border-[#E3E2D9] transition-transform duration-300 hover:scale-102 hover:shadow-sm cursor-pointer flex flex-col">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle>Recent Bookings</CardTitle>
-              {/* Optional: Add action like 'View All' */}
+              <div className="rounded-lg border-2 border-[#7B4F3A] bg-[#7B4F3A44] text-[#7B4F3A] flex items-center justify-center size-10">
+                <IoCalendarOutline className="size-4" />
+              </div>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 flex-1 overflow-auto">
               {recentBookings.map((booking, index) => (
                 <div key={index} className="flex items-center gap-4">
                   <Avatar className="h-9 w-9">
@@ -160,4 +261,4 @@ export default function OverviewPage() {
       </div>
     </PageContainer>
   );
-} 
+}

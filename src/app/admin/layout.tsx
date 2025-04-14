@@ -22,7 +22,7 @@ export default function AdminLayout({
       <div className={cn("flex flex-col flex-1 transition-all duration-300 ease-in-out", isSidebarOpen ? "pl-64" : "pl-20")}>
         <AdminHeader />
         <main className="flex-1">
-          <div className="p-6">
+          <div className="pb-6 px-6">
             {children}
           </div>
         </main>
