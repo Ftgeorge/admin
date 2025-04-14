@@ -313,3 +313,46 @@ export const settingsCategories = [
         component: PermissionsPanel
     },
 ];
+
+export const permissionGroups = [
+        {
+            name: "Properties",
+            permissions: [
+                { id: "prop_view", name: "View Properties" },
+                { id: "prop_create", name: "Create Properties" },
+                { id: "prop_edit", name: "Edit Properties" },
+                { id: "prop_delete", name: "Delete Properties" },
+                { id: "prop_approve", name: "Approve Properties" },
+            ]
+        },
+        {
+            name: "Users",
+            permissions: [
+                { id: "user_view", name: "View Users" },
+                { id: "user_create", name: "Create Users" },
+                { id: "user_edit", name: "Edit Users" },
+                { id: "user_delete", name: "Delete Users" },
+                { id: "user_suspend", name: "Suspend Users" },
+            ]
+        },
+        {
+            name: "Bookings",
+            permissions: [
+                { id: "book_view", name: "View Bookings" },
+                { id: "book_create", name: "Create Bookings" },
+                { id: "book_edit", name: "Edit Bookings" },
+                { id: "book_cancel", name: "Cancel Bookings" },
+                { id: "book_refund", name: "Process Refunds" },
+            ]
+        },
+        {
+            name: "Settings",
+            permissions: [
+                { id: "set_view", name: "View Settings" },
+                { id: "set_edit", name: "Edit Settings" },
+                { id: "set_roles", name: "Manage Roles" },
+                { id: "set_billing", name: "Billing Settings" },
+            ]
+        },
+    ];
+    
