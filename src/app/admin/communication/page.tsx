@@ -133,7 +133,7 @@ export default function Page() {
               </div>
               <input
                 type="text"
-                className="block w-full pl-10 pr-3 py-1.5 border border-gray-300 rounded-lg bg-transparent border border-[#E3E2D9] focus:outline-none focus:ring-2 focus:ring-[#7B4F3A] focus:border-transparent"
+                className="block w-full pl-10 pr-3 py-1.5 border border-[#E3E2D9] rounded-lg bg-transparent border border-[#E3E2D9] focus:outline-none focus:ring-2 focus:ring-[#7B4F3A] focus:border-transparent"
                 placeholder="Search communications..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -141,7 +141,7 @@ export default function Page() {
             </div>
             <Button
               variant="outline"
-              className="border-gray-300 text-gray-700 px-3 gap-2"
+              className="border-[#E3E2D9] text-gray-700 px-3 gap-2"
               onClick={() => setShowFilters(!showFilters)}
             >
               <Filter size={16} />
@@ -206,26 +206,26 @@ export default function Page() {
       </div>
 
       {showFilters && (
-        <div className="bg-transparent border border-[#E3E2D9] p-4 rounded-lg shadow-sm mb-6 border border-gray-200">
+        <div className="bg-transparent border border-[#E3E2D9] p-4 rounded-lg mb-6 border border-[#E3E2D9]">
           <h3 className="font-medium mb-3">Filter by Status</h3>
           <div className="flex gap-2">
             <Button
               variant={statusFilter === 'all' ? "default" : "outline"}
-              className={statusFilter === 'all' ? 'bg-[#7B4F3A] hover:bg-[#6A432F]' : 'border-gray-300'}
+              className={statusFilter === 'all' ? 'bg-[#7B4F3A] hover:bg-[#6A432F] text-white' : 'border-[#E3E2D9]'}
               onClick={() => setStatusFilter('all')}
             >
               All
             </Button>
             <Button
               variant={statusFilter === 'pending' ? "default" : "outline"}
-              className={statusFilter === 'pending' ? 'bg-amber-500 hover:bg-amber-600' : 'border-gray-300 text-amber-700'}
+              className={statusFilter === 'pending' ? 'bg-amber-500 hover:bg-amber-600' : 'border-[#E3E2D9] text-amber-700'}
               onClick={() => setStatusFilter('pending')}
             >
               Pending
             </Button>
             <Button
               variant={statusFilter === 'progress' ? "default" : "outline"}
-              className={statusFilter === 'progress' ? 'bg-blue-500 hover:bg-blue-600' : 'border-gray-300 text-blue-700'}
+              className={statusFilter === 'progress' ? 'bg-blue-500 hover:bg-blue-600' : 'border-[#E3E2D9] text-blue-700'}
               onClick={() => setStatusFilter('progress')}
             >
               In Progress
@@ -240,7 +240,7 @@ export default function Page() {
             const statusStyle = getMessageStatusStyle(message.status);
             return (
               <div
-                className="flex flex-col p-6 rounded-lg bg-transparent border border-[#E3E2D9] border border-gray-100 hover:border-gray-200 shadow-sm hover:shadow transition-all"
+                className="flex flex-col p-6 rounded-lg bg-transparent border border-[#E3E2D9] hover:border-[#E3E2D9] shadow-sm hover:shadow transition-all"
                 key={index}
               >
                 <div className="flex justify-between border-b border-gray-100 pb-4 mb-4">
@@ -297,7 +297,7 @@ export default function Page() {
         </div>
       ) : (
         <div className="p-10 text-center bg-transparent border border-[#E3E2D9] rounded-lg shadow-sm">
-          <MessageSquare size={48} className="text-gray-300 mx-auto mb-3" />
+          <MessageSquare size={48} className="text-[#E3E2D9] mx-auto mb-3" />
           <h3 className="text-xl font-medium text-gray-700">No messages found</h3>
           <p className="text-gray-500 mt-1">Try adjusting your search or filters</p>
         </div>
@@ -311,7 +311,7 @@ export default function Page() {
           <div className="flex gap-2">
             <Button
               variant="outline"
-              className="border-gray-300 text-gray-700 px-4 py-2"
+              className="border-[#E3E2D9] text-gray-700 px-4 py-2"
               disabled={currentPage === 1}
               onClick={() => goToPage(currentPage - 1)}
             >
@@ -333,7 +333,7 @@ export default function Page() {
                   <Button
                     key={pageNum}
                     variant="outline"
-                    className={`border-gray-300 ${currentPage === pageNum ? 'bg-[#F9F5F2] text-[#7B4F3A]' : 'text-gray-700'} px-4 py-2`}
+                    className={`border-[#E3E2D9] ${currentPage === pageNum ? 'bg-[#F9F5F2] text-[#7B4F3A]' : 'text-gray-700'} px-4 py-2`}
                     onClick={() => goToPage(pageNum)}
                   >
                     {pageNum}
@@ -345,7 +345,7 @@ export default function Page() {
 
             <Button
               variant="outline"
-              className="border-gray-300 text-gray-700 px-4 py-2"
+              className="border-[#E3E2D9] text-gray-700 px-4 py-2"
               disabled={currentPage === totalPages || totalPages === 0}
               onClick={() => goToPage(currentPage + 1)}
             >
@@ -359,7 +359,7 @@ export default function Page() {
       {selectedMessage && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-[#F8F7F2] border border-[#E3E2D9] rounded-lg p-6 max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-4 border-b border-gray-200 pb-4">
+            <div className="flex justify-between items-center mb-4 border-b border-[#E3E2D9] pb-4">
               <div className="flex items-center gap-3">
                 <div className="h-10 w-10 rounded-full bg-[#F9F5F2] flex items-center justify-center text-[#7B4F3A] font-semibold">
                   {selectedMessage.name.split(' ').map(n => n[0]).join('')}
@@ -383,7 +383,7 @@ export default function Page() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-gray-300"
+                  className="border-[#E3E2D9]"
                   onClick={closeMessageDetails}
                 >
                   Close
@@ -408,7 +408,7 @@ export default function Page() {
             <div className="flex justify-end mt-4 gap-3">
               <Button
                 variant="outline"
-                className="border-gray-300"
+                className="border-[#E3E2D9]"
                 onClick={closeMessageDetails}
               >
                 Cancel
