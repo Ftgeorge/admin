@@ -27,3 +27,22 @@ export const chartLabels: Record<ChartType, string> = {
     revenue: 'Revenue',
     transactions: 'Transactions'
 };
+
+export type PropertyStatus = "Pending" | "Active" | "Inactive" | "Archived";
+
+export interface Property {
+    id: number;
+    image: string;
+    name: string;
+    owner: string;
+    status: PropertyStatus;
+    locationType: string;
+    dateAdded: string;
+}
+
+export interface PropertyTableProps {
+    properties: Property[];
+    onApprove: (id: number) => void;
+    onReject: (id: number) => void;
+    onDelete: (id: number) => void;
+}

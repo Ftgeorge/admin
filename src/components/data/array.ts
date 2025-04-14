@@ -1,4 +1,4 @@
-import { Booking } from "@/lib/props";
+import { Booking, Property } from "@/lib/props";
 
 export const recentBookings: Booking[] = [
     {
@@ -58,4 +58,103 @@ export const salesTrendData = [
     { month: 'May', properties: 60, revenue: 21000000, transactions: 55 },
     { month: 'Jun', properties: 65, revenue: 24000000, transactions: 62 },
     { month: 'Jul', properties: 70, revenue: 25000000, transactions: 68 },
+];
+
+
+export const properties: Property[] = [
+    {
+        id: 1,
+        image: "/placeholder-property.jpg",
+        name: "Semi-Detached Duplex",
+        owner: "June Smith",
+        status: "Pending",
+        locationType: "Abuja - Duplex",
+        dateAdded: "2023-03-22",
+    },
+    {
+        id: 2,
+        image: "/placeholder-property.jpg",
+        name: "Luxury Apartment",
+        owner: "Alex Johnson",
+        status: "Active",
+        locationType: "Lagos - Apartment",
+        dateAdded: "2023-05-14",
+    },
+    {
+        id: 3,
+        image: "/placeholder-property.jpg",
+        name: "Beachfront Villa",
+        owner: "Michael Chen",
+        status: "Inactive",
+        locationType: "Port Harcourt - Villa",
+        dateAdded: "2023-02-08",
+    },
+    {
+        id: 4,
+        image: "/placeholder-property.jpg",
+        name: "Modern Bungalow",
+        owner: "Sarah Williams",
+        status: "Pending",
+        locationType: "Abuja - Bungalow",
+        dateAdded: "2023-07-30",
+    },
+    {
+        id: 5,
+        image: "/placeholder-property.jpg",
+        name: "Executive Office Space",
+        owner: "David Okonkwo",
+        status: "Active",
+        locationType: "Lagos - Commercial",
+        dateAdded: "2023-04-19",
+    },
+    {
+        id: 6,
+        image: "/placeholder-property.jpg",
+        name: "Terraced House",
+        owner: "Grace Adebayo",
+        status: "Archived",
+        locationType: "Ibadan - Terraced",
+        dateAdded: "2022-11-05",
+    },
+    {
+        id: 7,
+        image: "/placeholder-property.jpg",
+        name: "Waterfront Penthouse",
+        owner: "Omar Suleiman",
+        status: "Pending",
+        locationType: "Lagos - Penthouse",
+        dateAdded: "2023-06-12",
+    },
+    {
+        id: 8,
+        image: "/placeholder-property.jpg",
+        name: "Studio Apartment",
+        owner: "Chioma Eze",
+        status: "Inactive",
+        locationType: "Abuja - Studio",
+        dateAdded: "2023-01-25",
+    }
+];
+
+export const propertyManagementButtons = [
+    {
+        name: "All",
+        link: "/all"
+    },
+    {
+        name: "Pending",
+        link: "/pending"
+    },
+    {
+        name: "Active",
+        link: "/active"
+    },
+    {
+        name: "Inctive",
+        link: "/inactive"
+    },
+    {
+        name: "Archived",
+        link: "/archived"
+    },
 ];
