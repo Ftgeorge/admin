@@ -46,3 +46,24 @@ export interface PropertyTableProps {
     onReject: (id: number) => void;
     onDelete: (id: number) => void;
 }
+
+export type UserStatus = "Active" | "Pending" | "Banned";
+export type UserRole = "Landlord" | "Tenant" | "Admin";
+
+export interface User {
+    id: number;
+    profile: string;
+    name: string;
+    email: string;
+    contact: string;
+    role: UserRole;
+    status: UserStatus;
+    dateJoined: string;
+}
+
+export interface UserTableProps {
+    users: User[];
+    onApprove: (id: number) => void;
+    onReject: (id: number) => void;
+    onDelete: (id: number) => void;
+}

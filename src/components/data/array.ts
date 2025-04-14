@@ -1,4 +1,4 @@
-import { Booking, Property } from "@/lib/props";
+import { Booking, Property, User } from "@/lib/props";
 
 export const recentBookings: Booking[] = [
     {
@@ -158,3 +158,105 @@ export const propertyManagementButtons = [
         link: "/archived"
     },
 ];
+
+export const userManagementButtons = [
+    {
+        name: "All Users",
+        link: "All"
+    },
+    {
+        name: "Hosts",
+        link: "Hosts"
+    },
+    {
+        name: "Tenant",
+        link: "Tenant"
+    },
+    {
+        name: "Admin",
+        link: "Admin"
+    },
+]
+
+export const UserData: User[] = [
+    {
+        id: 1,
+        profile: "FG",
+        name: "Fabumni George",
+        email: "fgace@gmail.com",
+        contact: "9903474742",
+        role: "Landlord",
+        status: "Active",
+        dateJoined: "2023-03-22",
+    },
+    {
+        id: 2,
+        profile: "AJ",
+        name: "Ayo Joel",
+        email: "Joelayo@gmail.com",
+        contact: "8103485262",
+        role: "Tenant",
+        status: "Pending",
+        dateJoined: "2023-04-15",
+    },
+    {
+        id: 3,
+        profile: "SJ",
+        name: "Sarjas James",
+        email: "sarjas@gmail.com",
+        contact: "8112347830",
+        role: "Admin",
+        status: "Banned",
+        dateJoined: "2023-01-10",
+    },
+    {
+        id: 4,
+        profile: "ML",
+        name: "Mary Lawrence",
+        email: "mary.lawrence@example.com",
+        contact: "7034569821",
+        role: "Landlord",
+        status: "Active",
+        dateJoined: "2023-05-18",
+    },
+    {
+        id: 5,
+        profile: "TG",
+        name: "Tom Green",
+        email: "tom.green@example.com",
+        contact: "9056782314",
+        role: "Tenant",
+        status: "Active",
+        dateJoined: "2023-06-22",
+    },
+    {
+        id: 6,
+        profile: "SA",
+        name: "Sarah Adebayo",
+        email: "sarah.adebayo@example.com",
+        contact: "8012345678",
+        role: "Tenant",
+        status: "Pending",
+        dateJoined: "2023-07-14",
+    },
+    {
+        id: 7,
+        profile: "MO",
+        name: "Michael Okonkwo",
+        email: "michael.o@example.com",
+        contact: "7023456789",
+        role: "Landlord",
+        status: "Banned",
+        dateJoined: "2023-02-05",
+    },
+    {
+        id: 8,
+        profile: "JD",
+        name: "Jane Doe",
+        email: "jane.doe@example.com",
+        contact: "9012345678",
+        role: "Admin",
+        status: "Active",
+        dateJoined: "2023-01-30",
+    }
+]
