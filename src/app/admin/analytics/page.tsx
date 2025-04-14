@@ -1,5 +1,6 @@
 "use client";
 
+import { COLORS } from "@/components/data/constants";
 import PageContainer from "@/components/PageContainer";
 import PageHeader from "@/components/PageHeader";
 import PageHeading from "@/components/PageHeading";
@@ -26,24 +27,12 @@ import {
 import type { TooltipProps } from 'recharts';
 import type { ValueType, NameType } from 'recharts/types/component/DefaultTooltipContent';
 
-
-const COLORS = {
-  primary: "#7B4F3A", // Base brown
-  secondary: "#A67C52", // Lighter brown
-  accent1: "#D4A76A", // Warm gold
-  accent2: "#553222", // Dark brown
-  accent3: "#C68B59", // Caramel
-  light: "#F0E5D8", // Cream
-  background: "#FAF6F1", // Off-white
-  text: "#3A2A1F", // Dark brown text
-};
-
 const propertyBookingsData = Array.from({ length: 30 }, (_, i) => ({
   date: i + 1,
   value: Math.floor(Math.random() * 20 + 35 - i * 0.2),
 }));
 
-// Sample data for user acquisition
+
 const userAcquisitionData = Array.from({ length: 5 }, (_, i) => {
   return {
     month: `0${i + 1}`,
@@ -54,7 +43,6 @@ const userAcquisitionData = Array.from({ length: 5 }, (_, i) => {
   };
 });
 
-// Sample data for revenue sources
 const revenueSourcesData = [
   { name: "Booking Fees", value: 45 },
   { name: "Premium Listings", value: 25 },
@@ -62,7 +50,6 @@ const revenueSourcesData = [
   { name: "Ad Revenue", value: 10 },
 ];
 
-// Sample data for popular property locations
 const popularLocationsData = [
   { name: "Los Angeles", value: 32 },
   { name: "New York", value: 28 },
@@ -70,13 +57,11 @@ const popularLocationsData = [
   { name: "Chicago", value: 18 },
 ];
 
-// Sample data for occupancy rate
 const occupancyRateData = Array.from({ length: 7 }, (_, i) => ({
   day: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][i],
-  rate: Math.floor(Math.random() * 30 + 70), // 70-100% occupancy
+  rate: Math.floor(Math.random() * 30 + 70),
 }));
 
-// Custom tooltip components
 const BookingTooltip = ({ active, payload }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
@@ -137,17 +122,13 @@ export default function Page() {
   const [bookingTimeframe, setBookingTimeframe] = useState("30D");
   const [revenueTimeframe, setRevenueTimeframe] = useState("Q1");
 
-  // Calculate total bookings
   const totalBookings = propertyBookingsData.reduce((sum, item) => sum + item.value, 0);
-  
-  // Calculate total users
-  const totalUsers = userAcquisitionData.reduce((sum, item) => 
+
+  const totalUsers = userAcquisitionData.reduce((sum, item) =>
     sum + item.hosts + item.renters + item.agents + item.investors, 0);
-  
-  // Calculate total revenue (example value)
+
   const totalRevenue = "$384,592";
-  
-  // Calculate average occupancy
+
   const avgOccupancy = occupancyRateData.reduce((sum, item) => sum + item.rate, 0) / occupancyRateData.length;
 
   return (
@@ -167,10 +148,9 @@ export default function Page() {
         </div>
       </PageHeader>
 
-      {/* KPI Summary Cards */}
       <div className="grid grid-cols-4 gap-4 mb-6">
-        <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm flex items-center gap-4">
-          <div className="p-3 rounded-full" style={{ backgroundColor: COLORS.light }}>
+        <div className="bg-transparent rounded-lg p-4 border border-[#E3E2D9]  flex items-center gap-4">
+          <div className="p-3 rounded-full bg-[#F0E5D8]" >
             <Home size={20} style={{ color: COLORS.primary }} />
           </div>
           <div>
@@ -178,9 +158,9 @@ export default function Page() {
             <p className="text-2xl font-semibold text-gray-800">{totalBookings}</p>
           </div>
         </div>
-        
-        <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm flex items-center gap-4">
-          <div className="p-3 rounded-full" style={{ backgroundColor: COLORS.light }}>
+
+        <div className="bg-transparent rounded-lg p-4 border border-[#E3E2D9]  flex items-center gap-4">
+          <div className="p-3 rounded-full bg-[#F0E5D8]" >
             <Users size={20} style={{ color: COLORS.primary }} />
           </div>
           <div>
@@ -188,9 +168,9 @@ export default function Page() {
             <p className="text-2xl font-semibold text-gray-800">{totalUsers}</p>
           </div>
         </div>
-        
-        <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm flex items-center gap-4">
-          <div className="p-3 rounded-full" style={{ backgroundColor: COLORS.light }}>
+
+        <div className="bg-transparent rounded-lg p-4 border border-[#E3E2D9]  flex items-center gap-4">
+          <div className="p-3 rounded-full bg-[#F0E5D8]" >
             <DollarSign size={20} style={{ color: COLORS.primary }} />
           </div>
           <div>
@@ -198,9 +178,9 @@ export default function Page() {
             <p className="text-2xl font-semibold text-gray-800">{totalRevenue}</p>
           </div>
         </div>
-        
-        <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm flex items-center gap-4">
-          <div className="p-3 rounded-full" style={{ backgroundColor: COLORS.light }}>
+
+        <div className="bg-transparent rounded-lg p-4 border border-[#E3E2D9]  flex items-center gap-4">
+          <div className="p-3 rounded-full bg-[#F0E5D8]" >
             <TrendingUp size={20} style={{ color: COLORS.primary }} />
           </div>
           <div>
@@ -210,10 +190,8 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Main Charts */}
       <div className="grid grid-cols-2 gap-6 mb-6">
-        {/* Property Bookings Chart */}
-        <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+        <div className="bg-transparent rounded-lg p-6 border border-[#E3E2D9]">
           <div className="flex justify-between items-center mb-6">
             <div>
               <h3 className="text-lg font-medium text-gray-800">Property Bookings Trend</h3>
@@ -221,22 +199,20 @@ export default function Page() {
             </div>
             <div className="flex gap-2">
               <button
-                className={`text-xs px-3 py-1 rounded-full transition ${
-                  bookingTimeframe === "7D" 
-                    ? `text-white` 
+                className={`text-xs px-3 py-1 rounded-full transition ${bookingTimeframe === "7D"
+                    ? `text-white`
                     : `text-gray-500 hover:bg-gray-100`
-                }`}
+                  }`}
                 style={{ backgroundColor: bookingTimeframe === "7D" ? COLORS.primary : "transparent" }}
                 onClick={() => setBookingTimeframe("7D")}
               >
                 7D
               </button>
               <button
-                className={`text-xs px-3 py-1 rounded-full transition ${
-                  bookingTimeframe === "30D" 
-                    ? `text-white` 
+                className={`text-xs px-3 py-1 rounded-full transition ${bookingTimeframe === "30D"
+                    ? `text-white`
                     : `text-gray-500 hover:bg-gray-100`
-                }`}
+                  }`}
                 style={{ backgroundColor: bookingTimeframe === "30D" ? COLORS.primary : "transparent" }}
                 onClick={() => setBookingTimeframe("30D")}
               >
@@ -252,20 +228,20 @@ export default function Page() {
               >
                 <defs>
                   <linearGradient id="colorBookings" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor={COLORS.primary} stopOpacity={0.8}/>
-                    <stop offset="95%" stopColor={COLORS.primary} stopOpacity={0.1}/>
+                    <stop offset="5%" stopColor={COLORS.primary} stopOpacity={0.8} />
+                    <stop offset="95%" stopColor={COLORS.primary} stopOpacity={0.1} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" opacity={0.1} />
                 <XAxis dataKey="date" stroke={COLORS.text} />
                 <YAxis stroke={COLORS.text} />
                 <Tooltip content={<BookingTooltip />} />
-                <Area 
-                  type="monotone" 
-                  dataKey="value" 
-                  stroke={COLORS.primary} 
-                  fillOpacity={1} 
-                  fill="url(#colorBookings)" 
+                <Area
+                  type="monotone"
+                  dataKey="value"
+                  stroke={COLORS.primary}
+                  fillOpacity={1}
+                  fill="url(#colorBookings)"
                   strokeWidth={2}
                   activeDot={{ r: 6, fill: COLORS.primary }}
                 />
@@ -275,7 +251,7 @@ export default function Page() {
         </div>
 
         {/* User Acquisition Chart */}
-        <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+        <div className="bg-transparent rounded-lg p-6 border border-[#E3E2D9]">
           <div className="flex justify-between items-center mb-6">
             <div>
               <h3 className="text-lg font-medium text-gray-800">User Acquisition</h3>
@@ -336,8 +312,8 @@ export default function Page() {
       </div>
 
       <div className="grid grid-cols-2 gap-6">
-        {/* Revenue Sources Chart */}
-        <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+
+        <div className="bg-transparent rounded-lg p-6 border border-[#E3E2D9]">
           <div className="flex justify-between items-center mb-6">
             <div>
               <h3 className="text-lg font-medium text-gray-800">Revenue Sources</h3>
@@ -345,22 +321,20 @@ export default function Page() {
             </div>
             <div className="flex gap-2">
               <button
-                className={`text-xs px-3 py-1 rounded-full transition ${
-                  revenueTimeframe === "Q1" 
-                    ? `text-white` 
+                className={`text-xs px-3 py-1 rounded-full transition ${revenueTimeframe === "Q1"
+                    ? `text-white`
                     : `text-gray-500 hover:bg-gray-100`
-                }`}
+                  }`}
                 style={{ backgroundColor: revenueTimeframe === "Q1" ? COLORS.primary : "transparent" }}
                 onClick={() => setRevenueTimeframe("Q1")}
               >
                 Q1 2025
               </button>
               <button
-                className={`text-xs px-3 py-1 rounded-full transition ${
-                  revenueTimeframe === "YTD" 
-                    ? `text-white` 
+                className={`text-xs px-3 py-1 rounded-full transition ${revenueTimeframe === "YTD"
+                    ? `text-white`
                     : `text-gray-500 hover:bg-gray-100`
-                }`}
+                  }`}
                 style={{ backgroundColor: revenueTimeframe === "YTD" ? COLORS.primary : "transparent" }}
                 onClick={() => setRevenueTimeframe("YTD")}
               >
@@ -410,11 +384,10 @@ export default function Page() {
             </div>
           </div>
         </div>
-
-        {/* Popular Locations & Occupancy Rate */}
+        
+        {/* User Acquisition */}
         <div className="grid grid-rows-2 gap-6">
-          {/* Popular Locations */}
-          <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+          <div className="bg-transparent rounded-lg p-6 border border-[#E3E2D9]">
             <div className="mb-4">
               <h3 className="text-lg font-medium text-gray-800">Popular Locations</h3>
               <p className="text-sm text-gray-500">Property distribution by city</p>
@@ -449,7 +422,7 @@ export default function Page() {
           </div>
 
           {/* Occupancy Rate */}
-          <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+          <div className="bg-transparent rounded-lg p-6 border border-[#E3E2D9]">
             <div className="mb-4">
               <h3 className="text-lg font-medium text-gray-800">Average Occupancy Rate</h3>
               <p className="text-sm text-gray-500">Weekly property occupancy</p>
