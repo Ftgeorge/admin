@@ -21,6 +21,8 @@ import {
   Cell,
   ResponsiveContainer,
 } from "recharts";
+import type { TooltipProps } from 'recharts';
+import type { ValueType, NameType } from 'recharts/types/component/DefaultTooltipContent';
 
 // Sample data
 const totalBookingsData = Array.from({ length: 30 }, (_, i) => ({
@@ -53,26 +55,28 @@ const locationData = [
 const COLORS = ["#a855f7", "#3b82f6", "#f97316", "#22c55e"];
 
 // Custom tooltip components
-const BookingTooltip = ({ active, payload }) => {
+const BookingTooltip = ({ active, payload }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
+    const data = payload[0].payload;
+    const value = payload[0].value;
     return (
       <div className="bg-white p-2 border border-gray-200 rounded shadow-sm text-xs">
-        <p className="font-medium">{`Day ${payload[0].payload.date}`}</p>
-        <p>{`Bookings: ${payload[0].value.toFixed(0)}`}</p>
+        <p className="font-medium">{`Day ${data?.date}`}</p>
+        <p>{`Bookings: ${Number(value || 0).toFixed(0)}`}</p>
       </div>
     );
   }
   return null;
 };
 
-const UserGrowthTooltip = ({ active, payload, label }) => {
+const UserGrowthTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 border border-gray-200 rounded shadow-sm text-xs">
         <p className="font-medium">{`Month ${label}`}</p>
         {payload.map((entry, index) => (
           <p key={index} style={{ color: entry.color }}>
-            {`${entry.name}: ${entry.value.toFixed(0)}`}
+            {`${entry.name}: ${Number(entry.value || 0).toFixed(0)}`}
           </p>
         ))}
       </div>
@@ -81,12 +85,13 @@ const UserGrowthTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-const RevenueTooltip = ({ active, payload }) => {
+const RevenueTooltip = ({ active, payload }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
+    const data = payload[0];
     return (
       <div className="bg-white p-2 border border-gray-200 rounded shadow-sm text-xs">
-        <p className="font-medium">{payload[0].name}</p>
-        <p>{`Value: ${payload[0].value}%`}</p>
+        <p className="font-medium">{data?.name}</p>
+        <p>{`Value: ${data?.value}%`}</p>
       </div>
     );
   }
