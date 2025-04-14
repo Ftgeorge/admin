@@ -12,12 +12,14 @@ import {
   Settings,
 } from "lucide-react";
 import { HeuveraLogo } from "../logo/HeuveraLogo";
+import { RiMenu2Line } from "react-icons/ri";
 
 interface AdminSidebarProps {
   isOpen: boolean;
+  onToggleSidebar: () => void;
 }
 
-export function AdminSidebar({ isOpen }: AdminSidebarProps) {
+export function AdminSidebar({ isOpen, onToggleSidebar }: AdminSidebarProps) {
   const pathname = usePathname();
 
   const navItems = [
@@ -32,23 +34,31 @@ export function AdminSidebar({ isOpen }: AdminSidebarProps) {
   return (
     <aside
       className={cn(
-        "h-screen fixed left-0 top-0 z-10 border-r bg-[#F9F6F1] flex flex-col transition-all duration-300 ease-in-out",
+        "h-screen fixed left-0 top-0 z-10 border-r border-r-[#E3E2D9] bg-[#F8F7F2] flex flex-col transition-all duration-300 ease-in-out",
         isOpen ? "w-64 p-6" : "w-20 p-4 items-center"
       )}
     >
-      <div className={cn("mb-8", isOpen ? "" : "flex justify-center")}>
-        <h1
-          className={cn(
-            "font-semibold text-[#7B5B40] transition-all duration-300",
-            isOpen ? "text-2xl" : "text-lg" 
-          )}
-        >
+      <div className={cn("mb-8", isOpen ? "flex justify-between items-center" : "flex justify-center")}>
+        <div>
           {isOpen ?
             <HeuveraLogo height={30} width={30} />
             :
-            <HeuveraLogo height={30} width={30} />
+            <button onClick={onToggleSidebar}>
+              <HeuveraLogo height={30} width={30} />
+            </button>
           }
-        </h1>
+        </div>
+        {isOpen
+          ?
+          <button onClick={onToggleSidebar}>
+            <RiMenu2Line className="text-xl text-[#55555555]" />
+          </button>
+          :
+          <button className="hidden">
+            <RiMenu2Line className="text-xl text-[#55555555]" />
+          </button>
+        }
+
       </div>
 
       <nav className="flex flex-col space-y-4 flex-grow">
@@ -69,7 +79,7 @@ export function AdminSidebar({ isOpen }: AdminSidebarProps) {
             <span
               className={cn(
                 "overflow-hidden transition-opacity duration-200 ease-in-out text-sm",
-                isOpen ? "opacity-100 max-w-full" : "opacity-0 max-w-0 hidden" 
+                isOpen ? "opacity-100 max-w-full" : "opacity-0 max-w-0 hidden"
               )}
             >
               {item.label}

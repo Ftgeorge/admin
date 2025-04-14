@@ -18,9 +18,9 @@ export default function AdminLayout({
 
   return (
     <div className="flex min-h-screen bg-[#F8F7F2]">
-      <AdminSidebar isOpen={isSidebarOpen} />
+      <AdminSidebar isOpen={isSidebarOpen} onToggleSidebar={toggleSidebar} />
       <div className={cn("flex flex-col flex-1 transition-all duration-300 ease-in-out", isSidebarOpen ? "pl-64" : "pl-20")}>
-        <AdminHeader isSidebarOpen={isSidebarOpen} onToggleSidebar={toggleSidebar} />
+        <AdminHeader />
         <main className="flex-1">
           <div className="p-6">
             {children}
