@@ -26,7 +26,7 @@ import {
 import type { TooltipProps } from 'recharts';
 import type { ValueType, NameType } from 'recharts/types/component/DefaultTooltipContent';
 
-// Color palette based on #7B4F3A (rich brown)
+
 const COLORS = {
   primary: "#7B4F3A", // Base brown
   secondary: "#A67C52", // Lighter brown
@@ -38,7 +38,6 @@ const COLORS = {
   text: "#3A2A1F", // Dark brown text
 };
 
-// Sample data for property bookings trend
 const propertyBookingsData = Array.from({ length: 30 }, (_, i) => ({
   date: i + 1,
   value: Math.floor(Math.random() * 20 + 35 - i * 0.2),
