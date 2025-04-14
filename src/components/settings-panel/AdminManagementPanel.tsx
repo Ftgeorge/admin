@@ -14,7 +14,7 @@ export default function AdminManagementPanel() {
         <div className="space-y-6">
             <div className="border-b border-[#E3E2D9] pb-5 mb-6">
                 <h3 className="text-lg font-medium leading-6 text-gray-900 flex items-center gap-2">
-                    <Users className="h-5 w-5 text-amber-600" />
+                    <Users className="h-5 w-5 text-[#7B4F3A]" />
                     Admin Management
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
@@ -32,14 +32,14 @@ export default function AdminManagementPanel() {
                 <button
                     type="button"
                     onClick={() => setShowAddForm(!showAddForm)}
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md  text-white bg-[#7B4F3A] hover:bg-[#7B4F3A] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E3E2D9]"
                 >
                     Add Administrator
                 </button>
             </div>
 
             {showAddForm && (
-                <div className="bg-gray-50 p-4 rounded-md border border-gray-200 mt-4">
+                <div className="bg-transparent p-4 rounded-md border border-[#E3E2D9] mt-4">
                     <h5 className="text-md font-medium text-gray-700 mb-4">Add New Administrator</h5>
                     <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                         <div className="sm:col-span-3">
@@ -51,7 +51,7 @@ export default function AdminManagementPanel() {
                                     type="text"
                                     name="admin-name"
                                     id="admin-name"
-                                    className="shadow-sm focus:ring-amber-500 focus:border-amber-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
+                                    className=" focus:ring-[#E3E2D9] focus:border-[#E3E2D9] block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
                                 />
                             </div>
                         </div>
@@ -65,7 +65,7 @@ export default function AdminManagementPanel() {
                                     type="email"
                                     name="admin-email"
                                     id="admin-email"
-                                    className="shadow-sm focus:ring-amber-500 focus:border-amber-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
+                                    className=" focus:ring-[#E3E2D9] focus:border-[#E3E2D9] block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
                                 />
                             </div>
                         </div>
@@ -79,7 +79,7 @@ export default function AdminManagementPanel() {
                                     type="password"
                                     name="admin-password"
                                     id="admin-password"
-                                    className="shadow-sm focus:ring-amber-500 focus:border-amber-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
+                                    className=" focus:ring-[#E3E2D9] focus:border-[#E3E2D9] block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
                                 />
                             </div>
                         </div>
@@ -92,7 +92,7 @@ export default function AdminManagementPanel() {
                                 <select
                                     id="admin-role"
                                     name="admin-role"
-                                    className="shadow-sm focus:ring-amber-500 focus:border-amber-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
+                                    className=" focus:ring-[#E3E2D9] focus:border-[#E3E2D9] block w-full sm:text-sm border-gray-300 rounded-md p-2 border"
                                 >
                                     <option>Super Admin</option>
                                     <option>Property Manager</option>
@@ -108,13 +108,13 @@ export default function AdminManagementPanel() {
                         <button
                             type="button"
                             onClick={() => setShowAddForm(false)}
-                            className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                            className="bg-transparent py-2 px-4 border border-gray-300 rounded-md  text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E3E2D9]"
                         >
                             Cancel
                         </button>
                         <button
                             type="button"
-                            className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                            className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent  text-sm font-medium rounded-md text-white bg-[#7B4F3A] hover:bg-[#7B4F3A] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E3E2D9]"
                         >
                             Add Administrator
                         </button>
@@ -126,9 +126,9 @@ export default function AdminManagementPanel() {
                 <div className="flex flex-col">
                     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                <table className="min-w-full divide-y divide-gray-200">
-                                    <thead className="bg-gray-50">
+                            <div className="overflow-hidden border border-[#E3E2D9] sm:rounded-lg">
+                                <table className="min-w-full divide-y divide-[#E3E2D9]">
+                                    <thead className="bg-[#E3E2D955]">
                                         <tr>
                                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Name
@@ -144,14 +144,14 @@ export default function AdminManagementPanel() {
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody className="bg-white divide-y divide-gray-200">
+                                    <tbody className="bg-transparent divide-y divide-[#E3E2D9]">
                                         {admins.map((admin) => (
                                             <tr key={admin.id}>
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="flex items-center">
                                                         <div className="flex-shrink-0 h-10 w-10">
-                                                            <div className="h-10 w-10 rounded-full bg-amber-100 flex items-center justify-center">
-                                                                <span className="text-amber-800 font-medium">
+                                                            <div className="h-10 w-10 rounded-full bg-[#7B4F3A55] flex items-center justify-center">
+                                                                <span className="text-[#7B4F3A] font-medium">
                                                                     {admin.name.split(' ').map(n => n[0]).join('')}
                                                                 </span>
                                                             </div>
@@ -163,7 +163,7 @@ export default function AdminManagementPanel() {
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
-                                                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-amber-100 text-amber-800">
+                                                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#7B4F3A55] text-[#7B4F3A]">
                                                         {admin.role}
                                                     </span>
                                                 </td>
@@ -171,7 +171,7 @@ export default function AdminManagementPanel() {
                                                     {admin.lastLogin}
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <button className="text-amber-600 hover:text-amber-900 mr-4">
+                                                    <button className="text-[#7B4F3A] hover:text-[#7B4F3A] mr-4">
                                                         Edit
                                                     </button>
                                                     <button className="text-red-600 hover:text-red-900">

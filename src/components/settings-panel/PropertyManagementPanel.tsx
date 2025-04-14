@@ -3,7 +3,7 @@ import { Home } from "lucide-react";
 export default function PropertyManagementPanel() {
     return (
         <div className="space-y-6">
-            <div className="border-b border-gray-200 pb-5 mb-6">
+            <div className="border-b border-[#E3E2D9] pb-5 mb-6">
                 <h3 className="text-lg font-medium leading-6 text-gray-900 flex items-center gap-2">
                     <Home className="h-5 w-5 text-[#7B4F3A]" />
                     Property Management Settings
