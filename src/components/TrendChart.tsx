@@ -3,7 +3,7 @@ import { useState } from "react";
 import { salesTrendData } from "./data/array";
 import { LineChart, Line, BarChart as RechartsBarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ComposedChart } from 'recharts';
 
-export default function TrendChart() {
+export default function     TrendChart() {
     const [chartType, setChartType] = useState('properties');
 
     const formatRevenue = (value: any) => {

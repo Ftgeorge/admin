@@ -3,7 +3,7 @@ import { Home } from "lucide-react";
 export default function PropertyManagementPanel() {
     return (
         <div className="space-y-6">
-            <div className="border-b border-[#E3E2D9] pb-5 mb-6">
+            <div className="border-b border-primaryBorder pb-5 mb-6">
                 <h3 className="text-lg font-medium leading-6 text-gray-900 flex items-center gap-2">
                     <Home className="h-5 w-5 text-[#7B4F3A]" />
                     Property Management Settings
@@ -94,7 +94,7 @@ export default function PropertyManagementPanel() {
                                 id={`optional-${index}`}
                                 name={`optional-${index}`}
                                 type="checkbox"
-                                className="h-4 w-4 text-[#7B4F3A] focus:ring-[#E3E2D9] border-gray-300 rounded"
+                                className="h-4 w-4 text-[#7B4F3A] focus:ring-primaryBorder border-gray-300 rounded"
                                 defaultChecked={index < 2}
                             />
                             <label htmlFor={`optional-${index}`} className="text-sm text-gray-700">
@@ -108,7 +108,7 @@ export default function PropertyManagementPanel() {
             <div className="flex justify-end pt-5">
                 <button
                     type="button"
-                    className="bg-white py-2 px-4 border border-gray-300 rounded-md -sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E3E2D9]"
+                    className="bg-white py-2 px-4 border border-gray-300 rounded-md -sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryBorder"
                 >
                     Cancel
                 </button>
